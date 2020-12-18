@@ -42,6 +42,7 @@ display_options () {
     print_style "   up [services]" "success"; printf "\t Starts docker-sync and runs docker compose.\n"
     print_style "   down" "success"; printf "\t\t\t Stops containers and docker-sync.\n"
     print_style "   bash" "success"; printf "\t\t\t Opens bash on the workspace with user laradock.\n"
+    print_style "   zsh" "success"; printf "\t\t\t Opens zsh on the workspace with user laradock.\n"
     print_style "   sync" "info"; printf "\t\t\t Manually triggers the synchronization of files.\n"
     print_style "   clean" "danger"; printf "\t\t Removes all files from docker-sync.\n"
 }
@@ -70,6 +71,9 @@ elif [ "$1" == "down" ]; then
 
 elif [ "$1" == "bash" ]; then
     docker-compose exec --user=laradock workspace bash
+
+elif [ "$1" == "zsh" ]; then
+    docker-compose exec --user=laradock workspace zsh
 
 elif [ "$1" == "install" ]; then
     print_style "Installing docker-sync\n" "info"
